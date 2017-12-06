@@ -3,7 +3,8 @@ const gulp = require('gulp'),
     postCss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
     maps = require('gulp-sourcemaps'),
-    cleanCss = require('gulp-clean-css');
+    cleanCss = require('gulp-clean-css'),
+    connect = require('gulp-connect');
 
 gulp.task('sass', ()=> {
     return gulp.src('./scss/**/*.scss')
@@ -20,5 +21,23 @@ gulp.task('postcss', ['sass'], ()=>{
     .pipe(postCss(plugins))
     .pipe(cleanCss())
     .pipe(maps.write())
-    .pipe(gulp.dest('./css'));
+    .pipe(gulp.dest('./css'))
+    .pipe(connect.reload());
 });
+
+
+gulp.task('connect', function() {
+    connect.server({
+      root: '.',
+      livereload: true
+    });
+  });
+
+ 
+   
+  gulp.task('watch', function () {
+    gulp.watch(['./scss/**/*.scss'], ['postcss']);
+  });
+   
+  gulp.task('default', ['connect', 'watch']);
+   
