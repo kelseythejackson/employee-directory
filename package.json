@@ -1,0 +1,22 @@
+{
+  "name": "employee_directory_v1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelseythejackson/employee-directory.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kelseythejackson/employee-directory/issues"
+  },
+  "homepage": "https://github.com/kelseythejackson/employee-directory#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
