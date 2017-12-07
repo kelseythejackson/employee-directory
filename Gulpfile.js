@@ -33,10 +33,21 @@ gulp.task('connect', function() {
     });
   });
 
+  gulp.task('js', ()=> {
+    return gulp.src('script.js')
+    .pipe(connect.reload());
+  });
+
+  gulp.task('html', ()=> {
+    return gulp.src('index.html')
+    .pipe(connect.reload());
+  });
  
    
   gulp.task('watch', function () {
     gulp.watch(['./scss/**/*.scss'], ['postcss']);
+    gulp.watch(['script.js'], ['js']);
+    gulp.watch(['index.html'], ['html']);
   });
    
   gulp.task('default', ['connect', 'watch']);
