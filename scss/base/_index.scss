@@ -1,3 +1,21 @@
+body {
+    background: url('../img/seigaiha.png');
+    font-family: $font-family;
+    margin: 0;
+    padding: 0;
+    color: #404A51;
+}
+
 ul {
-    
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+h1 {
+    margin: 40px 0;
+} 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }

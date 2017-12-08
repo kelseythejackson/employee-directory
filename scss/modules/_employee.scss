@@ -1,0 +1,54 @@
+.employee {
+    &-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 36px;
+        margin: 0 auto;
+        max-width: 1320px;
+        
+
+        li {
+            align-items: center;
+            border-radius: 8px;
+            background: #ffffff;
+            box-shadow: 0px 0px 5px rgba(0,0,0, .5);
+            display: flex;
+            justify-content: flex-start;
+            padding: 28px;
+            transition: .4s;
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.05);
+                background: #F6F6F6;
+                box-shadow: 0px 0px 8px rgba(0,0,0, .5);
+            }
+            
+        }
+    }
+
+    &-img {
+        border: 2px solid #EAEAEA;
+        border-radius: 50%;
+        height: 127px;
+        width: 127px;
+
+    }
+    &-info {
+        display: inline-block;
+        margin-left: 28px;
+        
+    }
+    &-name {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        text-transform: capitalize;
+    }
+    &-email {
+        margin-bottom: 8px;
+    }
+    &-city {
+        text-transform: capitalize;
+    }
+}
