@@ -6,8 +6,11 @@
         modal = document.createElement('div');
 
         header.textContent = 'Awesome Startup Employee Directory';
-
-        app.appendChild(header);
+        const filterInput = createEl('input', 'filter-input', 'type', 'text');
+        filterInput.placeholder = 'filter by name';
+        console.log(filterInput);
+ 
+        
 
         fetch('https://randomuser.me/api/?results=12')
             .then(response => response.json())
@@ -15,9 +18,15 @@
                 const employees = data.results
                 console.log(employees);
                 console.log(listRepos(employees));
+                app.appendChild(header);
+                app.appendChild(filterInput);
                 app.appendChild(listRepos(employees));
+                setTimeout(() => {
+                    filterInput.focus();  
+                }, 750);
+                
 
-                const employeeList = app.children[1].children;
+                const employeeList = app.children[2].children;
 
                 for (let i = 0; i < employeeList.length; i++) {
                     
@@ -25,7 +34,6 @@
                     
                     employee.addEventListener('click', () => {
                         buildModal(employee.dataset.avatar, employee.dataset.name, employee.dataset.email, employee.dataset.city, employee.dataset.cell, employee.dataset.address, employee.dataset.dob);
-                        // console.log(employee.dataset.info);
                         const overLay = document.querySelector('.overlay');
                         overLay.classList.add('show');
                         activateClose();
@@ -40,7 +48,7 @@
                 
             })
             .catch(error => console.log('error is', error));
-        function createModalElement(element, className, attr, content) {
+        function createEl(element, className, attr, content) {
             const el = document.createElement(element);
             el.classList.add(className);
             el[attr] = content;
@@ -48,17 +56,17 @@
         }
 
         function buildModal(avatar, name, email, city, cell, address, dob) {
-            const overlay = createModalElement('div', 'overlay'),
-            modal = createModalElement('div', 'modal'),
-            modalClose = createModalElement('div', 'modal-close'),
-            modalAvatar = createModalElement('img', 'modal-avatar', 'src', avatar),
-            modalName = createModalElement('p', 'modal-name', 'textContent', name),
-            modalEmail = createModalElement('p', 'modal-email', 'textContent', email),
-            modalCity = createModalElement('p', 'modal-city', 'textContent', city),
-            modalDivider = createModalElement('div', 'modal-divider'),
-            modalPhoneNumber = createModalElement('p', 'modal-number', 'textContent', cell),
-            modalAddress = createModalElement('p', 'modal-address', 'textContent', address),
-            modalBirthday = createModalElement('p', 'modal-birthday', 'textContent', `Birthday: ${dob}`);
+            const overlay = createEl('div', 'overlay'),
+            modal = createEl('div', 'modal'),
+            modalClose = createEl('div', 'modal-close'),
+            modalAvatar = createEl('img', 'modal-avatar', 'src', avatar),
+            modalName = createEl('p', 'modal-name', 'textContent', name),
+            modalEmail = createEl('p', 'modal-email', 'textContent', email),
+            modalCity = createEl('p', 'modal-city', 'textContent', city),
+            modalDivider = createEl('div', 'modal-divider'),
+            modalPhoneNumber = createEl('p', 'modal-number', 'textContent', cell),
+            modalAddress = createEl('p', 'modal-address', 'textContent', address),
+            modalBirthday = createEl('p', 'modal-birthday', 'textContent', `Birthday: ${dob}`);
 
             modalClose.classList.add('fa', 'fa-times', 'fa-2x');
     

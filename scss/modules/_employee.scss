@@ -1,10 +1,12 @@
 .employee {
     &-list {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         grid-gap: 36px;
         margin: 0 auto;
         max-width: 1320px;
+        // position: relative;
+        // z-index: 2;
         
 
         li {
