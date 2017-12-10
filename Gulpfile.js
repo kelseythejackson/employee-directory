@@ -7,7 +7,7 @@ const gulp = require('gulp'),
     connect = require('gulp-connect');
 
 gulp.task('sass', ()=> {
-    return gulp.src('./scss/**/*.scss')
+    return gulp.src('./scss/*.scss')
     .pipe(sass())
     .pipe(gulp.dest('./css/'));
 });

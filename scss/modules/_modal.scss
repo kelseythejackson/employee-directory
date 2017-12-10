@@ -1,0 +1,62 @@
+.overlay {
+    align-items: center;
+    background: rgba(0, 0, 0, .75);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+
+}
+
+.modal {
+    align-items: center;
+    background: #ffffff;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 458px;
+    padding: 20px;
+    position: relative;
+    width: 458px;
+
+    &-close {
+        position: absolute;
+        
+        top: 8px;
+        right: 8px;
+        
+    }
+
+    &-avatar {
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 0 24px 0;
+        width: 170px;
+    }
+
+    &-name {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    &-email,
+    &-city,
+    &-number,
+    &-address,
+    &-birthday {
+        text-align: center;
+
+    }
+
+    &-divider {
+        background: rgba(64, 74, 81, .1);
+        height: 1px;
+        margin: 24px 0;
+        width: 100%;
+
+    }
+}
