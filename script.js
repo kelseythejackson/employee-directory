@@ -27,9 +27,35 @@
                 
 
                 const employeeList = app.children[2].children;
+                filterInput.addEventListener('keyup', ()=> {
+                    for (let i = 0; i < employeeList.length; i++) {
+                        const employee = employeeList[i];
+                        const newList = [];
+
+                        if(employee.dataset.name.indexOf(filterInput.value.toLowerCase()) === -1) {
+                            employee.classList.add('hide');
+                            
+                        } else {
+                            employee.classList.remove('hide');
+                        }
+                        
+                       
+                    //    console.log(filterInput.value.toLowerCase());
+                    }
+                    
+                    // if(filterInput.value === employeeList[0].dataset.name.indexOf()) {
+                    //     console.log(employeeList[0].dataset.name);
+                    // }
+                    
+                    // function filterList(query) {
+                    //     return employeeList.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) > -1);
+                    // }
+                    // console.log(filterList('a'));
+                });
+
+                
 
                 for (let i = 0; i < employeeList.length; i++) {
-                    
                     const employee = employeeList[i];
                     
                     employee.addEventListener('click', () => {
