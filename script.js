@@ -9,8 +9,6 @@
         const filterInput = createEl('input', 'filter-input', 'type', 'text');
         filterInput.placeholder = 'filter by name';
         console.log(filterInput);
- 
-        
 
         fetch('https://randomuser.me/api/?results=12')
             .then(response => response.json())
@@ -25,8 +23,9 @@
                     filterInput.focus();  
                 }, 750);
                 
-
                 const employeeList = app.children[2].children;
+                
+                
                 filterInput.addEventListener('keyup', ()=> {
                     for (let i = 0; i < employeeList.length; i++) {
                         const employee = employeeList[i];
@@ -38,22 +37,8 @@
                         } else {
                             employee.classList.remove('hide');
                         }
-                        
-                       
-                    //    console.log(filterInput.value.toLowerCase());
                     }
-                    
-                    // if(filterInput.value === employeeList[0].dataset.name.indexOf()) {
-                    //     console.log(employeeList[0].dataset.name);
-                    // }
-                    
-                    // function filterList(query) {
-                    //     return employeeList.filter(el => el.toLowerCase().indexOf(query.toLowerCase()) > -1);
-                    // }
-                    // console.log(filterList('a'));
                 });
-
-                
 
                 for (let i = 0; i < employeeList.length; i++) {
                     const employee = employeeList[i];
@@ -63,6 +48,33 @@
                         const overLay = document.querySelector('.overlay');
                         overLay.classList.add('show');
                         activateClose();
+                        const leftArrow = document.querySelector('.left');
+                        const rightArrow = document.querySelector('.right');
+                        leftArrow.addEventListener('click', ()=> {
+                            if(i === 0) {
+                                console.log('first-index')
+                            } else {
+                                const modal = document.querySelector('.modal');
+                                // modal.innerHTML = '<h1>Hello</h1>';
+                                console.log(modal.innerHTML);
+                                for (let i = 0; i < employeeList.length; i++) {
+                                    console.log(employeeList[i].dataset.avatar)
+                                    
+                                }
+                                // console.log(employeeList);  
+                            }
+                            
+    
+                        });
+
+                        rightArrow.addEventListener('click', ()=> {
+                            if(employee === employeeList.length -1) {
+                                cosnole.log('last-index')
+                            } else {
+                                console.log(employee.nextElementSibling);
+                            }
+                           
+                        });
                     });
                 }
                 function activateClose() {
@@ -70,10 +82,12 @@
                     close.addEventListener('click', () => {
                         body.removeChild(body.lastElementChild);
                     });
-                }
+                }  
+
                 
             })
             .catch(error => console.log('error is', error));
+
         function createEl(element, className, attr, content) {
             const el = document.createElement(element);
             el.classList.add(className);
@@ -92,8 +106,12 @@
             modalDivider = createEl('div', 'modal-divider'),
             modalPhoneNumber = createEl('p', 'modal-number', 'textContent', cell),
             modalAddress = createEl('p', 'modal-address', 'textContent', address),
-            modalBirthday = createEl('p', 'modal-birthday', 'textContent', `Birthday: ${dob}`);
+            modalBirthday = createEl('p', 'modal-birthday', 'textContent', `Birthday: ${dob}`),
+            modalLeftArrow = createEl('div', 'modal-arrow'),
+            modalRightArrow = createEl('div', 'modal-arrow');
 
+            modalLeftArrow.classList.add('left', 'fa', 'fa-arrow-circle-o-left', 'fa-3x');
+            modalRightArrow.classList.add('right', 'fa', 'fa-arrow-circle-o-right', 'fa-3x');
             modalClose.classList.add('fa', 'fa-times', 'fa-2x');
     
             modal.appendChild(modalClose);
@@ -105,8 +123,10 @@
             modal.appendChild(modalPhoneNumber);
             modal.appendChild(modalAddress);
             modal.appendChild(modalBirthday);
+            modal.appendChild(modalLeftArrow);
+            modal.appendChild(modalRightArrow);
             overlay.appendChild(modal);
-            body.appendChild(overlay);
+            body.appendChild(overlay); 
         } 
 
         function createDiv(className, content) {
@@ -147,10 +167,5 @@
                 employeeList.appendChild(li);
             });
             return employeeList;
-        }
-
-
-
-  
-        
+        }   
 })()

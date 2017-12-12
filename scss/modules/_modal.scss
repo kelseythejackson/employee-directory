@@ -59,6 +59,21 @@
         width: 100%;
 
     }
+
+    &-arrow {
+        position: absolute;
+        width: 44px;
+        height: 44px;
+        color: #404a51;
+
+        &.left {
+            left: 8px;
+        }
+
+        &.right {
+            right: 8px;
+        }
+    }
 }
 
 .show {
