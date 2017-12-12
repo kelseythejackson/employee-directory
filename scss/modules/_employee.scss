@@ -1,10 +1,12 @@
 .employee {
     &-list {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         grid-gap: 36px;
         margin: 0 auto;
         max-width: 1320px;
+        // position: relative;
+        // z-index: 2;
         
 
         li {
@@ -22,6 +24,10 @@
                 transform: scale(1.05);
                 background: #F6F6F6;
                 box-shadow: 0px 0px 8px rgba(0,0,0, .5);
+            }
+
+            &.hide {
+                display: none;
             }
             
         }
@@ -52,3 +58,4 @@
         text-transform: capitalize;
     }
 }
+
