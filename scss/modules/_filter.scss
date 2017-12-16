@@ -1,10 +1,27 @@
 .filter-input {
-    background: rgba(255, 255, 255, .25);
-    border-bottom: 2px solid black;
+    background: rgba($white, .5);
+    border: 2px solid rgba($white, .5);
+    border-radius: $border-radius;
+    box-shadow: 0 0 4px rgba($black, .5);
     display: inline-block;
-    font-size: 32px;
+    font-size: 24px;
     height: 60px;
     margin: 0 0 24px;
     padding: 8px;
-    width: 100%
+    width: 100% ;
+    transition: $transition;
+
+    &:focus {
+        outline: none;
+        border: 2px solid $gray-opacity;
+        color: $dark-gray;
+        &::placeholder {
+            color: $gray-opacity;
+        }
+
+    }
+
+    &::placeholder {
+        color: $gray-opacity-2;
+    }
 }

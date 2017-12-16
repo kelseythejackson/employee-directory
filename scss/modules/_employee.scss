@@ -29,7 +29,7 @@
             justify-content: flex-start;
             flex-direction: column;
             padding: 28px 0;
-            transition: .4s;
+            transition: $transition;
             width: 100%;
             // max-width: 300px;
             @include mq(desktop) {
@@ -80,52 +80,45 @@
     &-name {
         font-size: 24px;
         font-weight: 700;
-        margin-bottom: 12px;
+        margin: 12px 0;
         padding-bottom: 4px;
         text-transform: capitalize;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid $gray-opacity;
+        @include mq(desktop) {
+            margin: 0 0 12px 0; 
+        }
     }
     &-email {
         margin-bottom: 8px;
         font-size: 14px;
 
         &::before {
-            content: "\f1fa";
-            font-family: FontAwesome;
-            margin-right: 4px;
+            @include fa-icon("\f0e0");
         }
     }
     &-city {
         text-transform: capitalize;
 
         &::before {
-            content: "\f041";
-            font-family: FontAwesome;
-            margin-right: 4px;
+            @include fa-icon("\f041");
         }
     }
 
     &-number {
         &::before {
-            content: "\f095";
-            font-family: FontAwesome;
-            margin-right: 4px;
+            @include fa-icon("\f095");
         }
     }
 
     &-address {
         &::before {
-            content: "\f015";
-            font-family: FontAwesome;
-            margin-right: 4px;
+            @include fa-icon("\f015");
         }
     }
 
     &-birthday {
         &::before {
-            content: "\f1fd";
-            font-family: FontAwesome;
-            margin-right: 4px;
+            @include fa-icon("\f1fd");
         }
     }
 
@@ -148,16 +141,18 @@
 
     .modal & {
 
+
         &-img {
             margin-bottom: 32px;
         }
-        &-email,
+        // &-email,
     &-city,
     &-number,
     &-address,
     &-birthday {
         text-align: center;
         margin-bottom: 8px;
+        text-transform: capitalize;
 
     }
     }

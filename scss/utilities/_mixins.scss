@@ -33,3 +33,10 @@
       @error 'No value could be retrieved for `#{$break}`. '
     }
   }
+
+  @mixin fa-icon($icon) {
+    color: $gray-opacity;
+    content: $icon;
+    font-family: FontAwesome;
+    margin-right: 4px;
+  }

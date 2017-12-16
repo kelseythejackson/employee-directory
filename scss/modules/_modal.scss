@@ -1,6 +1,6 @@
 .overlay {
     align-items: center;
-    background: rgba(0, 0, 0, .75);
+    background: $gray-opacity;
     display: none;
     height: 100vh;
     justify-content: center;
@@ -13,8 +13,9 @@
 
 .modal {
     align-items: center;
-    background: #ffffff;
+    background: $white;
     border-radius: 4px;
+    box-shadow: 0 0 16px $gray-opacity;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,7 +61,7 @@
     }
 
     &-divider {
-        background: rgba(64, 74, 81, .1);
+        background: $gray-opacity;
         height: 1px;
         margin: 24px 0;
         width: 100%;
@@ -71,7 +72,7 @@
         position: absolute;
         width: 44px;
         height: 44px;
-        color: #404a51;
+        color: $gray-opacity;
 
         &.left {
             left: 8px;
