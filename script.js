@@ -22,22 +22,16 @@
             const employeeList = app.children[2].children; // gets the employees in the DOM
 
             filterInput.addEventListener('keyup', () => {// filter functionality
-                for (let i = 0; i < employeeList.length; i++) {
-                    const employee = employeeList[i];
-                    const newList = [];
-
+                for (let employee of employeeList) {
                     if (employee.dataset.name.includes(filterInput.value.toLowerCase())) {
                         employee.classList.remove('hide');
-
                     } else {
                         employee.classList.add('hide');
                     }
                 }
             });
- 
-            for (let i = 0; i < employeeList.length; i++) { // iterates over the the employees list
-                const employee = employeeList[i];
 
+            for (let employee of employeeList) { // iterates over the the employees list
                 employee.addEventListener('click', () => { // adds a click handler to each employee
                     buildModal(); // appends the modal to the DOM
                     const overLay = document.querySelector('.overlay'); // gets the overlay
@@ -47,13 +41,12 @@
                     // Gets the left and Right arrows
                     const leftArrow = document.querySelector('.left');
                     const rightArrow = document.querySelector('.right');
-                    
+
                     employee.classList.add('current'); //Adds the class of current to the clicked employee
 
                     leftArrow.addEventListener('click', () => { //cycles through the employees and from the left
                         const modalList = document.querySelector('.modal-list').children;
-                        for (let i = 0; i < modalList.length; i++) {
-                            const element = modalList[i];
+                        for (let element of modalList) {
                             if (!element.previousElementSibling && element.classList.contains('current')) {
                                 element.parentNode.lastElementChild.classList.add('current');
                                 element.classList.remove('current');
@@ -67,8 +60,7 @@
                     });
                     rightArrow.addEventListener('click', () => { //cycles through the employees and from the left
                         const modalList = document.querySelector('.modal-list').children;
-                        for (let i = 0; i < modalList.length; i++) {
-                            const element = modalList[i];
+                        for (let element of modalList) {
                             if (element.nextElementSibling && element.classList.contains('current')) {
                                 element.classList.remove('current');
                                 element.nextElementSibling.classList.add('current');
@@ -79,7 +71,6 @@
                                 element.parentNode.firstElementChild.classList.add('current');
                             }
                         }
-
                     });
                     function buildModal() {// Creates the modal and appends it to the DOM
                         const overlay = createEl('div', 'overlay'),
@@ -95,8 +86,7 @@
                         modal.appendChild(modalClose);
                         modal.appendChild(listEmployees(employees, true)); // appends the employee list to the modal
                         const modalList = modal.children[1].children;
-                        for (let i = 0; i < modalList.length; i++) {
-                            const modalDetail = modalList[i];
+                        for (let modalDetail of modalList) {
                             if (employee.dataset.name === modalDetail.dataset.name) { // shows the clicked employee in the modal
                                 modalDetail.classList.add('current')
                             }
@@ -136,7 +126,7 @@
     function listEmployees(employees, detail = false) { // builds the employee list
         const employeeList = document.createElement('ul');
 
-        if (detail) {
+        if (detail) { // Adds a class to the list based on if it's the detail modal or not
             employeeList.id = 'modal-list';
             employeeList.classList.add('modal-list');
         } else {
@@ -144,7 +134,7 @@
             employeeList.classList.add('employee-list');
         }
 
-        employees.forEach((employee) => {
+        employees.forEach(employee => {
 
             const li = document.createElement('li'),
                 dob = new Date(employee.dob),
@@ -158,7 +148,8 @@
                 employeePhoneNumber = createEl('div', 'employee-number', 'textContent', employee.cell),
                 employeeAddress = createEl('div', 'employee-address', 'textContent', `${employee.location.street}, ${employee.location.state}, ${employee.location.postcode} `),
                 employeeBirthday = createEl('div', 'employee-birthday', 'textContent', `${dob.getDate()}/${dob.getDay()}/${dob.getFullYear()}`);
-            if (detail) {
+
+            if (detail) {// Adds a class to the list based on if it's the detail modal or not
                 infoSpan.classList.add('modal-info');
             } else {
                 infoSpan.classList.add('employee-info');
@@ -167,7 +158,7 @@
             infoSpan.appendChild(employeeName);
             infoSpan.appendChild(employeeEmail);
             infoSpan.appendChild(employeeCity);
-            if (detail) {
+            if (detail) {// Appends these elements to the list based on if it's the detail modal or not
                 infoSpan.appendChild(employeeDivider);
                 infoSpan.appendChild(employeePhoneNumber);
                 infoSpan.appendChild(employeeAddress);
