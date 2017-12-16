@@ -26,15 +26,15 @@
                     const employee = employeeList[i];
                     const newList = [];
 
-                    if (employee.dataset.name.indexOf(filterInput.value.toLowerCase()) === -1) {
-                        employee.classList.add('hide');
+                    if (employee.dataset.name.includes(filterInput.value.toLowerCase())) {
+                        employee.classList.remove('hide');
 
                     } else {
-                        employee.classList.remove('hide');
+                        employee.classList.add('hide');
                     }
                 }
             });
-
+ 
             for (let i = 0; i < employeeList.length; i++) { // iterates over the the employees list
                 const employee = employeeList[i];
 
