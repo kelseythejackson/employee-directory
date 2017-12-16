@@ -12,13 +12,14 @@ ul {
     padding: 0;
 }
 h1 {
-    margin: 40px 0;
+    margin: 24px 0;
+    
+    text-align: center;
+    @include mq(medium) {
+        text-align: left;
+    }
 } 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+
 
 p {
     font-size: 14px;
@@ -28,4 +29,10 @@ p {
 input {
     appearance: none;
     border: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }

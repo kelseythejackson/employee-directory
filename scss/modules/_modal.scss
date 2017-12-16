@@ -22,12 +22,19 @@
     padding: 20px;
     position: relative;
     width: 458px;
+    overflow: hidden;
+    margin: 0 8px;
+
+    @include mq(medium) {
+        margin: 0; 
+    }
 
     &-close {
         position: absolute;
         
         top: 8px;
         right: 8px;
+        z-index: 2;
         
     }
 
@@ -68,11 +75,61 @@
 
         &.left {
             left: 8px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
         }
 
         &.right {
             right: 8px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
         }
+    }
+
+    &-list{
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+
+        li {
+            align-items: center;
+            background: transparent;
+            box-shadow: none;
+            display: none;
+            flex-direction: column;
+            
+            justify-content: center;
+            margin: 0 auto;
+
+            @include mq(medium) {
+min-width: 418px;
+            }
+
+
+            &.current {
+                display: flex;
+            }
+
+            &.hidden {
+                display: none;
+            }
+
+            &:hover {
+                transform: none;
+                background: initial;
+                box-shadow: none;
+            }
+        }
+    }
+
+    &-info {
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     }
 }
 

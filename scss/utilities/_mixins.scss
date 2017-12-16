@@ -1,0 +1,35 @@
+// Media queries
+
+@mixin mq($break) {
+    @if $break == 'small' {
+      @media (min-width: $brkpoint-sm) and (max-width: $brkpoint-smallish) {
+        @content;
+      }
+    } @elseif $break == 'iphone6' {
+      @media (min-width: $brkpoint-iphone6) {
+        @content;
+      }
+    } @else if $break == 'iphone6plus' {
+      @media (min-width: $brkpoint-iphone6plus) {
+        @content;
+      }
+    } @else if $break == 'medium' {
+      @media (min-width: $brkpoint-md) {
+        @content;
+      }
+    } @else if $break == 'large' {
+      @media (min-width: $brkpoint-lg) {
+        @content;
+      }
+    } @else if $break == 'not-device'{
+      @media (min-width: $brkpoint-no-device) {
+        @content;
+      }
+    } @else if $break == 'desktop' {
+      @media (min-width: $brkpoint-desktop) {
+        @content;
+      }
+    } @else {
+      @error 'No value could be retrieved for `#{$break}`. '
+    }
+  }
